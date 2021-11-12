@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-title *ngIf="!isloading">Pokemon</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <!-- <img width="10" height="10" src="https://c.tenor.com/fSsxftCb8w0AAAAi/pikachu-running.gif"> -->
+    <ion-toolbar>
+      <ion-button>
+        hola
+      </ion-button>
+      <ion-title size="large">Pokemon</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+
+    
+
+    <ion-row>
+
+
+      <ion-col>
+
+
+        <ion-col size="9" offset="1.5" class="ion-text-center">
+          <div *ngIf="!isLoading">
+            <img src="https://c.tenor.com/fSsxftCb8w0AAAAi/pikachu-running.gif">
+          </div>
+        </ion-col>
+
+        <ion-list *ngIf="isLoading">
+          <ion-item *ngFor="let poke of results.results" [routerLink]="['/pokemon',poke.name]">
+            <ion-avatar slot="start">
+              <ion-img [src]="'assets/imagenes/pokeball.png'"></ion-img>
+            </ion-avatar>
+            <ion-label>{{poke.name}}</ion-label>
+          </ion-item>
+        </ion-list>
+
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+
+      <ion-col  size="9" offset="1.5" class="ion-text-center">
+
+        <ion-button *ngIf="isPreviuos" (click)="previous()" class="button2" color="danger">
+          <<
+        </ion-button>
+
+        <ion-button *ngIf="isNext" (click)="next()" class="button" color="danger">
+
+          >>
+        </ion-button>
+      </ion-col>
+
+      <!-- <ion-col >
+    <div class="spinner-border text-primary" role="status">
+      <span></span>
+    </div>
+  </ion-col> -->
+
+      <!-- <ion-col  size="9" offset="1.5" class="ion-text-center">
+        <ion-button *ngIf="isPreviuos" (click)="previous()" class="button2">
+          <<
+        </ion-button>
+      </ion-col> -->
+    </ion-row>
+
+  </ion-grid>
+</ion-content>
